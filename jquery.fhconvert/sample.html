@@ -9,18 +9,15 @@
 <script type="text/javascript">
 $(function() {
     $('#zenkaku').blur(function() {
-        var $this = $(this);
-        $this.fhconvert('htof');
+        $(this).fhconvert('htof');
     });
 
     $('#hankaku').blur(function() {
-        var $this = $(this);
-        $this.fhconvert('ftoh');
+        $(this).fhconvert('ftoh');
     });
 
     $('#kana').blur(function() {
-        var $this = $(this);
-        $this.fhconvert('hgtokk');
+        $(this).fhconvert('hgtokk');
     });
 });
 </script>

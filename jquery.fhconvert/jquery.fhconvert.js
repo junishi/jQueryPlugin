@@ -4,7 +4,6 @@
 *  @author @niwaringo
 */
 (function($) {
-   var name_space = 'fhconvert';
     /*
     *  @param {String} type 指定された変換方法で変換
     *  @param {Object} options 日本語、全角スペース等の設定
@@ -15,16 +14,14 @@
     * hkktofkk　:　半角ｶﾅ→全角カナ
     */
 
-   $.fn[name_space] = function(type, options) {
-       var $obj = this;
-
+   $.fn[fhconvert] = function(type, options) {
        var settings = $.extend({
            'jaCode':true,
            'space':true,
            'convSet':'object'
        }, options);
 
-       $obj.each(function() {
+       $(this).each(function() {
            var $this = $(this);
            var convertText = FHConvert[type]($this.val(), settings);
 
