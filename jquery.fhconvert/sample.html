@@ -8,19 +8,8 @@
 <script type="text/javascript" src="./jquery.fhconvert.js"></script>
 <script type="text/javascript">
 $(function() {
-    $('#zenkaku').blur(function() {
-        var $this = $(this);
-        $this.fhconvert('htof');
-    });
-
-    $('#hankaku').blur(function() {
-        var $this = $(this);
-        $this.fhconvert('ftoh');
-    });
-
-    $('#kana').blur(function() {
-        var $this = $(this);
-        $this.fhconvert('hgtokk');
+    $('.fhconvert').blur(function() {
+        $(this).fhconvert();
     });
 });
 </script>
@@ -60,13 +49,13 @@ $(function() {
         blurに各種変換をくわえるサンプル
     </div>
 フォーカスが外れると全角になる。
-<input id="zenkaku" type="text" />
+<input class="fhconvert" type="text" data-fhconvert='{"type": "htof"}' />
 <br />
 フォーカスが外れると半角になる。
-<input id="hankaku" type="text" />
+<input class="fhconvert" type="text" data-fhconvert='{"type": "ftoh"}' />
 <br />
 フォーカスが外れるとカナになる。
-<input id="kana" type="text" />
+<input class="fhconvert" type="text" data-fhconvert='{"type": "hgtokk"}' />
 </div>
 </div>
 </body>
