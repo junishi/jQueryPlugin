@@ -1,7 +1,7 @@
 /*
 *  fhconvert(http://distraid.co.jp/demo/js_codeconv.html)のラッププラグインです。
 *  @example HTML <input type="text" data-fhconvert='{"type": "ftoh"}' />
-*  @example $(selector).fhconvert('htof')
+*  @example $(selector).fhconvert();
 *  @author @niwaringo
 */
 (function($) {
@@ -15,21 +15,25 @@
    $.fn.fhconvert = function() {
        $(this).each(function() {
            var $this = $(this);
-           //data属性から変換タイプを取得する。
-           var convertType = $this.data('fhconvert').type;
-           //data属性からオプションを取得する。
+           //data属性を取得する。
+           var $dataAttr = $this.data('fhconvert');
+
+           //data属性がない場合は抜ける
+           if(typeof($dataAttr) === 'undefined') {
+               return true;
+           }
+
+           //data属性から値を取得する。
+           var fhconvertType = $dataAttr.type;
            var settings = $.extend({
                'jaCode':true,
                'space':true,
                'convSet':'object'
            }, $this.data('fhconvert').option);
 
-           if(typeof(convertType) === 'undefined') {
-               return ture;
-           }
 
            // hfconvertに渡す
-           $this.val(FHConvert[convertType]($this.val(), settings));
+           $this.val(FHConvert[fhconvertType]($this.val(), settings));
        });
 
        return this;
