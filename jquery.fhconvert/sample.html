@@ -48,17 +48,36 @@ $(function() {
     <div id="desc">
         blurに各種変換をくわえるサンプル
     </div>
+    <strong>オブジェクトで指定</strong>
+    <br />
 フォーカスが外れると全角になる。
 <input class="fhconvert" type="text" data-fhconvert='{"type": "htof"}' />
 <br />
+フォーカスが外れると全角になる。(スペース含まず)
+<input class="fhconvert" type="text" data-fhconvert='{"type": "htof", "option": {"space":false}}' />
+<br />
 フォーカスが外れると半角になる。
 <input class="fhconvert" type="text" data-fhconvert='{"type": "ftoh"}' />
+<br />
+フォーカスが外れると半角になる。
+<input class="fhconvert" type="PASSWORD" data-fhconvert='{"type": "ftoh"}' />
 <br />
 フォーカスが外れるとカナになる。
 <input class="fhconvert" type="text" data-fhconvert='{"type": "hgtokk"}' />
 <br />
 データ属性を指定しない。
 <input class="fhconvert" type="text" />
+<br />
+<br />
+<strong>文字列で指定</strong>
+<br />
+フォーカスが外れると全角になる。
+<input class="fhconvert" type="text" data-fhconvert='htof' />
+<hr />
+<strong>複数指定 文字列</strong>
+<br />
+ひらがな → カナ と 半角カナ → 全角カナを両方行う。
+<input class="fhconvert" type="text" id="array" data-hoge='[muga1, muga2]' data-fhconvert='["hkktofkk", "hgtokk"]' />
 </div>
 </div>
 </body>
