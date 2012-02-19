@@ -2,9 +2,7 @@
 [distraid Inc様のfhconvert.js](http://distraid.co.jp/demo/js_codeconv.html)のラッププラグインです。
 
 半角全角相互変換、 カタカナひらがな相互変換等を行うjQuery Pluginです。
-複数一括変換を追加しています。
 
-　
 ## 基本的な使い方
 
 変換タイプはdata属性を見ますので、対象inputにdata属性(data-fhconvert)を指定してください。
