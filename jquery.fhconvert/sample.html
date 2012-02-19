@@ -8,8 +8,23 @@
 <script type="text/javascript" src="./jquery.fhconvert.js"></script>
 <script type="text/javascript">
 $(function() {
-    $('.fhconvert').blur(function() {
-        $(this).fhconvert();
+    // 諸事情でinputにdata属性がつけれないことを考慮した書き方
+    $('.fhconvert').each(function() {
+        var $this = $(this);
+        //inputの場合はそのままフォーカスアウトに指定する
+        if($this[0].tagName === 'INPUT') {
+            $this.focusout(function() {
+                $(this).fhconvert();
+            });
+        } else {
+            //inputでない場合は、inputにデータ属性をコピーする
+            $input = $this.find('input');
+            $input.data('fhconvert', $this.data('fhconvert'));
+            
+            $input.focusout(function() {
+                $(this).fhconvert();
+            });
+        }
     });
 });
 </script>
@@ -69,6 +84,7 @@ $(function() {
 <input class="fhconvert" type="text" />
 <br />
 <br />
+<hr />
 <strong>文字列で指定</strong>
 <br />
 フォーカスが外れると全角になる。
@@ -78,6 +94,13 @@ $(function() {
 <br />
 ひらがな → カナ と 半角カナ → 全角カナを両方行う。
 <input class="fhconvert" type="text" id="array" data-hoge='[muga1, muga2]' data-fhconvert='["hkktofkk", "hgtokk"]' />
+<hr />
+<strong>inputではなく上位のdivで指定</strong>
+<br />
+フォーカスが外れるとカナになる。
+<div class="fhconvert" data-fhconvert="hgtokk">
+<input type="text" />
+</div>
 </div>
 </div>
 </body>
